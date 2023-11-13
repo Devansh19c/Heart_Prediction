@@ -16,3 +16,7 @@ Create a New Environment
 ```
 conda create -p venv python==3.7 -y
 ```
+Installing Dependencies
+```
+pip install -r requirements.txt
+```
