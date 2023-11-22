@@ -21,3 +21,5 @@ Installing Dependencies
 ```
 pip install -r requirements.txt
 ```
+### Author 
+Devansh Chamoli
