@@ -36,8 +36,15 @@ def predict():
     print(final_input)
     output = logmodel.predict(final_input)[0]
     
-    return render_template("home.html",prediction_text="The condtion of your heart is : {}".format(output))
+    if output == 0:
+        output = "Absolutely Fine , No Possibilities of Heart Attack Detected"
+    else :
+        output = "Possibility of Heart Attack Detected ,Consider visiting a Doctor "
+    
+    
+     
+    return render_template("home.html",prediction_text="The condition of your heart: {}".format(output))
     
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0" ,port=5000)
