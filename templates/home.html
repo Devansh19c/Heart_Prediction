@@ -1,3 +1,338 @@
-<h1>
-    Testing
-</h1>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            height: 280vh;
+        }
+
+        .login {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+        }
+        
+        /* Styling og the select element */
+        .custom-dropdown select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        /* Styling of the arrow icon */
+        .custom-dropdown::after {
+            content: '\25BC'; /* Unicode character for a downward arrow */
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none; /* Ensure the arrow doesn't interfere with the select element */
+           
+        }
+
+
+        /* Style the input container */
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Style the input element */
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Styling the helper text */
+.helper-text {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+    
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Heart Prediction</h1>
+        <form action="{{ url_for('predict')}}" method="POST">
+
+            <!-- INPUT 1-->
+            <div class="input-container">
+            <input type="text" name="Age" placeholder = "Age" required = "required" /><br>
+            </div>
+
+
+            <!-- INPUT 2-->
+            <div class="input-container">
+               <input type="text" id="cholesterol" name="Cholesterol" placeholder="Cholesterol" required>
+               <div class="helper-text">Normal cholesterol levels range from 200 to 239.</div>
+            </div>
+
+
+            <!-- INPUT 3-->
+            <div class="input-container">
+            <input type="text" name="Heart Rate" placeholder = "Heart Rate" required = "required" /><br>
+            <div class="helper-text">Live Heartbeat measurement support to be added in further updates using suitable hardware.</div>
+            </div>
+
+    
+            <!-- INPUT 4-->
+            <div class="input-container">
+            <label for="Diabetes"style="color: #888;">Diabetes:</label>
+            <div class="custom-dropdown">
+                <select id="Diabetes" name="Diabetes" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            </div>
+
+
+            <!-- INPUT 5-->
+            <div class="input-container">
+          <label for="familyHistory"style="color: #888;">Family History of Heart Attacks ? :</label>
+          <div class="custom-dropdown">
+              <select id="familyHistory" name="FamilyHistory" required>
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+          </div>
+          </div>
+            
+            <!-- INPUT 6-->
+            <div class="input-container">
+                <label for="Smoking"style="color: #888;">Smoking ? :</label>
+                <div class="custom-dropdown">
+                    <select id="Smoking" name="Smoking" required>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                </div>
+
+            <!-- INPUT 7-->
+            <div class="input-container">
+                <label for="Obesity"style="color: #888;">Obesity ? :</label>
+                <div class="custom-dropdown">
+                    <select id="Obesity" name="Obesity" required>
+                        <option value="5">Extreme Obesity</option>
+                        <option value="2">Obese</option>
+                        <option value="1">Mild Obesity</option>
+                        <option value="0">Not Obese</option>
+                    </select>
+                </div>
+                </div>
+            
+
+            <!-- INPUT 8-->
+            <div class="input-container">
+                <label for="Alcohol Consumption"style="color: #888;">Alcohol Consumption ? :</label>
+                <div class="custom-dropdown">
+                    <select id="Alcohol Consumption" name="Alcohol Consumption" required>
+                        <option value="5">Extremely Alcoholic</option>
+                        <option value="2">Alcoholic</option>
+                        <option value="1">Mild Alcoholic</option>
+                        <option value="0">Not Alcoholic</option>
+                    </select>
+                </div>
+                </div>
+
+             <!-- INPUT 9-->
+             <div class="input-container">
+            <input type="text" name="Exercise Hours Per Week" placeholder = "Exercise Hours Per Week" required = "required" /><br>
+             </div>
+
+   
+            <!-- INPUT 10-->
+            <div class="input-container">
+            <label for="Diet"style="color: #888;">Diet ? :</label>
+                <div class="custom-dropdown">
+                    <select id="Diet" name="Diet" required>
+                        <option value="5">Extremely Unhealthy</option>
+                        <option value="2">Unhealthy</option>
+                        <option value="1">Moderate</option>
+                        <option value="0">Extremely Good</option>
+                    </select>
+                </div>
+                </div>
+
+             <!-- INPUT 11-->
+             <div class="input-container">
+                <label for="Previous Heart Problems/Complications"style="color: #888;">Previous Heart Problems/Complications ? :</label>
+                <div class="custom-dropdown">
+                    <select id="Previous Heart Problems/Complications" name="Previous Heart Problems/Complications" required>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                </div>
+
+            <!-- INPUT 12-->
+            <div class="input-container">
+                <label for="Medication Use"style="color: #888;">Medication Use ? :</label>
+                <div class="custom-dropdown">
+                    <select id="Medication Use" name="Medication Use" required>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                </div>
+
+            <!-- INPUT 13-->
+            <div class="input-container">
+                <input type="text" id="Stress Level" name="Stress Level" placeholder="Stress Level" required>
+                <div class="helper-text">On a scale of 1-10.</div>
+             </div>
+
+            <!-- INPUT 14-->
+            <div class="input-container">
+                <input type="text" id="Sedentary Hours Per Day" name="Sedentary Hours Per Day" placeholder="Sedentary Hours Per Day" required>
+                <div class="helper-text">Sedantary Hours are the hours in which you are seated. </div>
+             </div>
+
+             <!-- INPUT 15-->
+            <div class="input-container">
+                <input type="text" id="Income" name="Income" placeholder="Income" required>
+                <div class="helper-text">Please write your income in Dollars </div>
+             </div>
+
+
+            <!-- INPUT 16-->
+            <div class="input-container">
+                <input type="text" id="BMI" name="BMI" placeholder="BMI" required>
+                <div class="helper-text">BMI is Calculated by Weight (in kgs) /Height(in metres) squared </div>
+             </div>
+ 
+             
+            
+             <!-- INPUT 17-->
+             <div class="input-container">
+                <input type="text" id="Physical Activity Days Per Week" name="Physical Activity Days Per Week" placeholder="Physical Activity Days Per Week" required>
+             </div>
+            
+             <!-- INPUT 18-->
+             <div class="input-container">
+                <input type="text" id="Sleep Hours Per Day" name="Sleep Hours Per Day" placeholder="Sleep Hours Per Day" required>
+             </div>
+            
+
+
+             <input type="text" name="Continent_Africa" placeholder = "Continent_Africa" required = "required" /><br>
+             <input type="text" name="Continent_Asia" placeholder = "Continent_Asia" required = "required" /><br>
+             <input type="text" name="Continent_Australia" placeholder = "Continent_Australia" required = "required" /><br>
+             <input type="text" name="Continent_Europe" placeholder = "Continent_Europe" required = "required" /><br>
+             <input type="text" name="Continent_North America" placeholder = "Continent_North America" required = "required" /><br>
+             <input type="text" name="Continent_South America" placeholder = "Continent_South America" required = "required" /><br>
+ 
+
+
+               <!-- INPUT 16-->
+               <div class="input-container">
+                <input type="text" id="Systolic" name="Systolic" placeholder="Systolic" required>
+                <div class="helper-text">Normal Systolic Levels Range from </div>
+             </div>
+
+               <!-- INPUT 16-->
+               <div class="input-container">
+                <input type="text" id="Diastolic" name="Diastolic" placeholder="Diastolic" required>
+                <div class="helper-text">Normal Diastolic Levels Range from </div>
+             </div>
+
+
+            <input type="text" name="Sex_Female" placeholder = "Sex_Female" required = "required" /><br>
+            <input type="text" name="Sex_Male" placeholder = "Sex_Male" required = "required" /><br>
+          
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div class="result">
+            {{prediction_text}}
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
