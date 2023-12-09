@@ -38,11 +38,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq unzip
 
-      - name: Set up Node.js 16
-        uses: actions/setup-node@v4
-        with:
-          node-version: 16
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -74,11 +69,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Set up Node.js 16
-        uses: actions/setup-node@v4
-        with:
-          node-version: 16
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
