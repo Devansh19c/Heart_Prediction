@@ -37,7 +37,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y jq unzip
-          
+
       - name: Set up Node.js 16
         uses: actions/setup-node@v4
         with:
