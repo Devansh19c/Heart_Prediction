@@ -1,8 +1,12 @@
 ### Heart Attack Risk Prediction
 I've developed a machine learning model to predict heart health conditions, specifically classifying whether a user is prone to a heart attack. Leveraging the power of AWS/Heroku for deployment (yet to be achieved) and Docker for containerization, I've streamlined the deployment process, ensuring seamless integration with GitHub Actions for continuous integration and continuous deployment (CI/CD). This allows users to easily access and utilize the predictive capabilities of the model. The combination of these technologies not only ensures efficiency in deployment but also facilitates a scalable and user-friendly experience for individuals concerned about their heart health.
+
 ![Screenshot 2023-12-09 204618](https://github.com/Devansh19c/Heart_Prediction/assets/105194073/f6ff4d06-e306-49f0-a80f-ef9203e032eb)
 
 
+App Preview :
+
+![Screenshot 2023-12-09 142027](https://github.com/Devansh19c/Heart_Prediction/assets/105194073/d3a29be2-2d49-43e5-97cf-46afed56ca74)
 
 
 ### Software and Tool Requirements 
